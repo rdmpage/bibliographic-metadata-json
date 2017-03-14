@@ -161,9 +161,70 @@ The CSL-JSON is stored in the **message** key. CrossRef has added a lot of Cross
 
 An advantage of CSL-JSON is that if you want to display journal-style article citations, then the data is already in the format that the CSL tools require, making this step relatively trivial.
 
-### Multilingual 
+### Multi-lingual 
 
-For example, the article **伊朗West Azarbaijan省切叶蜂科(膜翅目:蜜蜂总科)昆虫种类** (in English **The species of Megachilidae (Hymenoptera: Apoidea)from West Azarbaijan province, northwestern Iran**) [doi:10.15914/j.cnki.wykx.2015.31.06](http://dx.doi.org/10.15914/j.cnki.wykx.2015.31.06) can be represented like this:
+Frank G. Bennett outlined a way to store multi-lingual information about a reference (e.g., the title may occur in more than one language). His descriptions is hard to find, but is in the [wayback machine](https://web.archive.org/web/20150406064709/http://gsl-nagoya-u.net/http/pub/citeproc-doc.html#id36) and below I’ve extracted the relevant section.
+
+[start of extract]
+
+### Data format
+
+Multi-lingual operation depends upon the presence of alternative representations of field content embedded in the item data. When alternative field content is not availaable, the "real" field content is used as a fallback. As a result, configuration of language and script selection parameters will have no effect when only a single language is available (as will normally be the case for an ordinary Zotero data store).
+
+#### Title
+
+For titles and other ordinary string fields, alternative representations are placed in a separate multi segment on the item, keyed to the field name and the language tag (note the use of the _keys element on the multi object):
+
+```javascript
+{ "title" : "民法",
+  "multi": {
+    "_keys": {
+      "title": {
+        "ja-alalc97": "Minpō",
+        "en":"Civil Code"
+      }
+        }
+  }
+}
+```
+
+#### Names
+
+For names, alternative representations are set on a multi segment of the name object itself (note the use of the _key element on the multi object):
+
+Hint: As described above, fixed ordering is used for non-Byzantine names. When such names are transliterated, the static-ordering element is set on them, to preserve their original formatting behavior.
+
+```javascript
+{ "author" : [
+    { "family" : "穂積",
+      "given" : "陳重",
+      "multi": {
+        "_key": {
+          "ja-alalc97": {
+            "family" : "Hozumi",
+            "given" : "Nobushige"
+          }
+        }
+      }
+    },
+    { "family" : "中川",
+      "given" : "善之助"
+      "multi": {
+        "_key": {
+          "ja-alalc97": {
+            "family" : "Nakagawa",
+            "given" : "Zennosuke"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+[end of extract]
+
+Based on this description, the article **伊朗West Azarbaijan省切叶蜂科(膜翅目:蜜蜂总科)昆虫种类** (in English **The species of Megachilidae (Hymenoptera: Apoidea)from West Azarbaijan province, northwestern Iran**) [doi:10.15914/j.cnki.wykx.2015.31.06](http://dx.doi.org/10.15914/j.cnki.wykx.2015.31.06) can be represented like this:
 ```
 {
 	"id": "ITEM-1",
@@ -224,7 +285,6 @@ The **multi** key lists the values for different languages.
 - not always the easiest to read
 - field names not always obvious
 - format driven by supporting displaying citations
-
 
 
 
