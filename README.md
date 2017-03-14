@@ -1,9 +1,61 @@
 # Representing bibliographic data in JSON
 
-These are notes on how to model bibliographic metadata in JSON. I am assuming that if you are ready this you accept representing data as documents, and serialising those documents in JSON is a good thing to do. For example, once you have data in JSON you can store it in a database such as CouchDB, or a search index like Elasticsearch.
+These are notes on how to model bibliographic metadata in JSON. I am assuming that if you are ready this you accept representing data as documents, and serialising those documents in JSON is a good thing to do. For example, once you have data in JSON you can store it in a database such as CouchDB, or a search index like Elasticsearch. Other models are available, such as using a relational database (e.g., Pyle, R. L. (2004). Taxonomer: a relational data model for managing information relevant to taxonomic research. Phyloinformatics, 1, 1–54. http://doi.org/10.5281/zenodo.59790 ).
 
 ## BibJSON
 
+BibJSON is a convention for representing bibliographic metadata   in JSON http://okfnlabs.org/bibjson/. It is heavily influenced by BibTeX. For an account of using BibJSON with Elasticsearch see [Indexing Linked Bibliographic Data with JSON-LD, BibJSON and Elasticsearch](http://journal.code4lib.org/articles/7949).
+
+Below is some BibJSON for **The valid generic name for red-backed voles (Muroidea: Cricetidae: Arvicolinae): restatement of the case for Myodes Pallas, 1811** [doi:10.1644/14-MAMM-A-004](http://dx.doi.org/10.1644/14-MAMM-A-004) (slightly simplified, the original BibJSON served by CouchDB can be viewed at http://bionames.org/api/id/10.1644/14-MAMM-A-004 )
+
+```javascript
+{
+	"title": "The valid generic name for red-backed voles (Muroidea: Cricetidae: Arvicolinae): restatement of the case for Myodes Pallas, 1811",
+	"journal": {
+		"name": "Journal of Mammalogy",
+		"volume": "95",
+		"issue": "5",
+		"pages": "943",
+		"identifier": [{
+			"type": "issn",
+			"id": "0022-2372"
+		}]
+	},
+	"year": "2014",
+	"author": [{
+		"firstname": "Michael D.",
+		"lastname": "Carleton",
+		"name": "Michael D. Carleton"
+	}, {
+		"firstname": "Alfred L.",
+		"lastname": "Gardner",
+		"name": "Alfred L. Gardner"
+	}, {
+		"firstname": "Igor Ya.",
+		"lastname": "Pavlinov",
+		"name": "Igor Ya. Pavlinov"
+	}, {
+		"firstname": "Guy G.",
+		"lastname": "Musser",
+		"name": "Guy G. Musser"
+	}],
+	"identifier": [{
+		"type": "doi",
+		"id": "10.1644\/14-MAMM-A-004"
+	}],
+	"type": "article",
+	"abstract": "In view of contradictions in the recent literature, the valid genus-group name to be applied to northern red-backed voles\u2014 Myodes Pallas, 1811, or Clethrionomys Tilesius, 1850\u2014is reviewed. To develop the thesis that Myodes (type species, Mus rutilus Pallas, 1779) is the correct name, our discussion explores the 19th-century taxonomic works that bear on the relevant taxa, the transition in zoological codes apropos the identification of type species, and past nomenclatural habits in cases where no type species was originally indicated. We conclude that Myodes is the senior name to use for the genus-group taxon that includes the Holarctic species rutilus and frame this conclusion within a synonymy of the genus."
+}
+```
+
+
+### Pros
+- simple to read
+- easy to add extra elements such as identifiers (e.g., Handles, PMC, etc.)
+- promoted by OKFN
+- used in [BioStor](http://biostor.org) and [BioNames](http://bionames.org)
+### Cons
+- BibTeX influence leads to odd conventions such as “--“ (two dashes) to separate page numbers
 
 ## CSL-JSON
 
@@ -115,6 +167,7 @@ An advantage of CSL-JSON is that if you want to display journal-style article ci
 - support for multiple languages in metadata
 
 ### Cons
+- not always the easiest to read
 - field names not always obvious
 - format driven by supporting displaying citations
 
