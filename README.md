@@ -161,17 +161,6 @@ The CSL-JSON is stored in the **message** key. CrossRef has added a lot of Cross
 
 An advantage of CSL-JSON is that if you want to display journal-style article citations, then the data is already in the format that the CSL tools require, making this step relatively trivial.
 
-### Pros
-- used by CrossRef (with lots of extra data)
-- easy to format citations using CSL tools
-- support for multiple languages in metadata
-
-### Cons
-- not always the easiest to read
-- field names not always obvious
-- format driven by supporting displaying citations
-
-
 ### Multilingual 
 
 For example, the article **伊朗West Azarbaijan省切叶蜂科(膜翅目:蜜蜂总科)昆虫种类** (in English **The species of Megachilidae (Hymenoptera: Apoidea)from West Azarbaijan province, northwestern Iran**) [doi:10.15914/j.cnki.wykx.2015.31.06](http://dx.doi.org/10.15914/j.cnki.wykx.2015.31.06) can be represented like this:
@@ -225,6 +214,18 @@ For example, the article **伊朗West Azarbaijan省切叶蜂科(膜翅目:蜜蜂
 ```
 
 The **multi** key lists the values for different languages.
+
+### Pros
+- used by CrossRef (with lots of extra data)
+- easy to format citations using CSL tools
+- support for multiple languages in metadata
+
+### Cons
+- not always the easiest to read
+- field names not always obvious
+- format driven by supporting displaying citations
+
+
 
 
 ## JSON-LD
