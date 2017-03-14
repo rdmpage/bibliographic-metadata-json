@@ -56,10 +56,11 @@ Below is some BibJSON for **The valid generic name for red-backed voles (Muroide
 - used in [BioStor](http://biostor.org) and [BioNames](http://bionames.org)
 ### Cons
 - BibTeX influence leads to odd conventions such as “--“ (two dashes) to separate page numbers
+- sometimes a pain to index - for example, there is no “DOI” field, you have to iterate over the **identifier** key to find the DOI (if it exists), likewise you have to split the **pages** field to get the first and last page of an article.
 
 ## CSL-JSON
 
-The Citation Style Language (CSL) is a set of standards and tools to generate formatted bibliographies in virtually any style. Although arguably the whole notion that each journal should have its own particular style for citing articles is madness, CSL has proved to be a popular tool. The files that specify the journal formats are in XML, but metadata for the article itself is often represented in JSON (see https://github.com/citation-style-language/schema#csl-json-schema). CSL-JSON has been adopted by CrossRef, and you can get CSL-JSON for any CrossRef DOI using content negotiation, or through the [CrossRef search tool](http://search.crossref.org) by clicking on the “Actions” then “Metadata as JSON” menu. Here is CSL JSON for the article [doi:10.1644/14-MAMM-A-004](http://dx.doi.org/10.1644/14-MAMM-A-004) (directly available from https://api.crossref.org/v1/works/http://dx.doi.org/10.1644/14-mamm-a-004)
+The Citation Style Language (CSL) is a set of standards and tools to generate formatted bibliographies in virtually any style. Although arguably the whole notion that each journal should have its own particular style for citing articles is madness, CSL has proved to be a popular tool. The files that specify the journal formats are in XML, but metadata for the article itself is often represented in JSON (see https://github.com/citation-style-language/schema#csl-json-schema). CSL-JSON has been adopted by CrossRef as the native format returned by their API (they support other formats as well via content negotiation), and you can get CSL-JSON for any CrossRef DOI using content negotiation, or through the [CrossRef search tool](http://search.crossref.org) by clicking on the “Actions” then “Metadata as JSON” menu. Here is CSL JSON for the article [doi:10.1644/14-MAMM-A-004](http://dx.doi.org/10.1644/14-MAMM-A-004) (directly available from https://api.crossref.org/v1/works/http://dx.doi.org/10.1644/14-mamm-a-004)
 
 ```javascript
 {
@@ -290,9 +291,10 @@ The **multi** key lists the values for different languages.
 
 ## JSON-LD
 
-JSON-LD is linked data in JSON, see http://json-ld.org. The data structure is a set of triples, using whatever vocabulary you like. Hence it isn’t a data structure in the sense of BibJSON or CSL-JSON. Below is an example of JSON-LD “in the wild”, in this case in https://academic.oup.com/jmammal/article/95/5/943/984478/The-valid-generic-name-for-red-backed-voles [doi:10.1644/14-MAMM-A-004](http://dx.doi.org/10.1644/14-MAMM-A-004). It uses [schema.org](http://schema.org) as the vocabulary.
+JSON-LD is linked data in JSON, see http://json-ld.org. The data structure is a set of triples, using whatever vocabulary you like. Hence it isn’t a data structure in the sense of BibJSON or CSL-JSON. Below is an example of JSON-LD “in the wild”, in this case in embedded in a ```<script>```  tag in the ```<head>``` of the web page https://academic.oup.com/jmammal/article/95/5/943/984478/The-valid-generic-name-for-red-backed-voles [doi:10.1644/14-MAMM-A-004](http://dx.doi.org/10.1644/14-MAMM-A-004). It uses [schema.org](http://schema.org) as the vocabulary.
 
 ```javascript
+<script type="application/ld+json">
 {
 	"@context": "http://schema.org",
 	"@id": "https://academic.oup.com/jmammal/article/95/5/943/984478/The-valid-generic-name-for-red-backed-voles",
@@ -335,6 +337,7 @@ JSON-LD is linked data in JSON, see http://json-ld.org. The data structure is a 
 	"pageStart": "943",
 	"pageEnd": "959"
 }
+</script>
 ```
 
 ### Pros
@@ -342,6 +345,7 @@ JSON-LD is linked data in JSON, see http://json-ld.org. The data structure is a 
 
 
 ### Cons
-- not widely used
-- to be useful requires that everyone agrees on the same vocabulary and why to represent identifiers
+- not widely used (yet?)
+- to be useful requires that everyone agrees on the same vocabulary and uses shared identifiers (DOIs and ISSNs make this relatively simple, although representing DOIs is poorly standardised, e.g. doi:, http://dx.doi.org/, https://doi.org/, etc.)
+
 
