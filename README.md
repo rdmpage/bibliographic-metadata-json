@@ -226,7 +226,8 @@ Hint: As described above, fixed ordering is used for non-Byzantine names. When s
 [end of extract]
 
 Based on this description, the article **伊朗West Azarbaijan省切叶蜂科(膜翅目:蜜蜂总科)昆虫种类** (in English **The species of Megachilidae (Hymenoptera: Apoidea)from West Azarbaijan province, northwestern Iran**) [doi:10.15914/j.cnki.wykx.2015.31.06](http://dx.doi.org/10.15914/j.cnki.wykx.2015.31.06) can be represented like this:
-```
+
+```javascript
 {
 	"id": "ITEM-1",
 	"title": "\u4f0a\u6717West Azarbaijan\u7701\u5207\u53f6\u8702\u79d1(\u819c\u7fc5\u76ee:\u871c\u8702\u603b\u79d1)\u6606\u866b\u79cd\u7c7b",
