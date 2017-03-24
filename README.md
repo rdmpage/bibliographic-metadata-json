@@ -1,6 +1,6 @@
 # Representing bibliographic data in JSON
 
-These are notes on how to model bibliographic metadata in JSON. I am assuming that if you are ready this you accept representing data as documents, and serialising those documents in JSON is a good thing to do. For example, once you have data in JSON you can store it in a database such as CouchDB, or a search index like Elasticsearch. Other models are available, such as using a relational database (e.g., Pyle, R. L. (2004). Taxonomer: a relational data model for managing information relevant to taxonomic research. Phyloinformatics, 1, 1–54. http://doi.org/10.5281/zenodo.59790 ).
+These are notes on how to model bibliographic metadata in JSON. I am assuming that if you are reading this you accept representing data as documents, and serialising those documents in JSON is a good thing to do. For example, once you have data in JSON you can store it in a database such as CouchDB, or a search index like Elasticsearch. Other models are available, such as using a relational database (e.g., Pyle, R. L. (2004). Taxonomer: a relational data model for managing information relevant to taxonomic research. Phyloinformatics, 1, 1–54. http://doi.org/10.5281/zenodo.59790 ).
 
 ## BibJSON
 
@@ -164,7 +164,7 @@ An advantage of CSL-JSON is that if you want to display journal-style article ci
 
 ### Multi-lingual 
 
-Frank G. Bennett outlined a way to store multi-lingual information about a reference (e.g., the title may occur in more than one language). His descriptions is hard to find, but is in the [wayback machine](https://web.archive.org/web/20150406064709/http://gsl-nagoya-u.net/http/pub/citeproc-doc.html#id36) and below I’ve extracted the relevant section.
+Frank G. Bennett outlined a way to store multi-lingual information about a reference (e.g., the title may occur in more than one language). His description is hard to find, but is in the [wayback machine](https://web.archive.org/web/20150406064709/http://gsl-nagoya-u.net/http/pub/citeproc-doc.html#id36) and below I’ve extracted the relevant section.
 
 [start of extract]
 
