@@ -278,8 +278,31 @@ Based on this description, the article **伊朗West Azarbaijan省切叶蜂科(�
 
 The **multi** key lists the values for different languages.
 
+### Citations
+CrossRef have recently started including lists of literature cited in the DOI metadata, see the [Initiative for Open Citations](https://i4oc.org). These are in the **references** key, e.g. for  [doi:10.3897/zookeys.520.9558](https://api.crossref.org/v1/works/http://dx.doi.org/10.3897/zookeys.520.9558) the first three references are:
+
+```javascript
+		"reference": [{
+			"key": "5985_B1",
+			"DOI": "10.1002\/mmnd.18950400203"
+		}, {
+			"key": "5985_B2",
+			"DOI": "10.1111\/j.1365-2311.1948.tb01236.x"
+		}, {
+			"key": "5985_B3",
+			"first-page": "144",
+			"article-title": "A new species of Minettia Desvoidy (Diptera, Sapromyzidae).",
+			"volume": "99",
+			"author": "Collin",
+			"year": "1966",
+			"journal-title": "The Entomologist"
+		}
+]
+```
+
 ### Pros
 - used by CrossRef (with lots of extra data)
+- used by [AnyStyle](https://anystyle.io) citation parser
 - easy to format citations using CSL tools
 - support for multiple languages in metadata
 
